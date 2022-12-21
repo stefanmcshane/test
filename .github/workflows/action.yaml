@@ -13,4 +13,4 @@ jobs:
     - name: Install Porter CLI
       run: |
         /bin/bash -c "$(curl -fsSL https://install.porter.run)"
-        porter version
+        echo Stefan - $(porter version)
