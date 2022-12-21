@@ -1,0 +1,12 @@
+"on":
+  push:
+    branches:
+    - main
+name: Bash Test
+jobs:
+  porter-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      run: |
+        echo $OSTYPE
