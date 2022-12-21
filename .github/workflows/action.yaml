@@ -10,3 +10,6 @@ jobs:
     - name: Checkout code
       run: |
         echo $OSTYPE
+    - name: Install Porter CLI
+      run: |
+        /bin/bash -c "$(curl -fsSL https://install.porter.run)"
