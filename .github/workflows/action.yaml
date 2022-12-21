@@ -14,3 +14,14 @@ jobs:
       run: |
         /bin/bash -c "$(curl -fsSL https://install.porter.run)"
         echo Stefan - $(porter version)
+        
+  porter-deploy-ubuntu-old:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      run: |
+        echo $OSTYPE
+    - name: Install Porter CLI
+      run: |
+        /bin/bash -c "$(curl -fsSL https://install.porter.run)"
+        echo old - $(porter version)        
