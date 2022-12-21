@@ -49,7 +49,7 @@ jobs:
             
             exit
         }
-
+        echo $OSTYPE
         if [[ "$OSTYPE" == "linux-gnu"* ]]; then
             if uname -a | grep -q '^Linux.*Microsoft'; then
                 echo "[WARNING] WSL support is experimental and may result in crashes."
