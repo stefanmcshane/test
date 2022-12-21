@@ -24,7 +24,6 @@ jobs:
     - name: Install Porter CLI
       run: |
         #!/bin/bash
-
         # Script to install the Porter CLI on macOS, Linux, and WSL
 
         osname=""
@@ -44,12 +43,16 @@ jobs:
 
             curl -L https://github.com/porter-dev/porter/releases/latest/download/$name --output $name
             unzip -a $name
-            
-            ls
-            
+            rm $name
+
+            chmod +x ./porter
+            sudo mv ./porter /usr/local/bin/porter
+
+            command -v porter >/dev/null 2>&1 || { echo "[ERROR] There was an error installing the Porter CLI. Please try again." >&2; exit 1; }
+
             exit
         }
-        echo $OSTYPE
+
         if [[ "$OSTYPE" == "linux-gnu"* ]]; then
             if uname -a | grep -q '^Linux.*Microsoft'; then
                 echo "[WARNING] WSL support is experimental and may result in crashes."
@@ -62,4 +65,6 @@ jobs:
         fi
 
         echo "[ERROR] Unsupported operating system."
-        exit 1    
+        exit 1
+    - name: Porter Version
+      run: echo $(porter version)
